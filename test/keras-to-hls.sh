@@ -8,6 +8,7 @@ rf=1
 strategy="Latency"
 type="ap_fixed<16,6>"
 basedir=vivado_prj
+maxloop=500
 
 sanitizer="[^A-Za-z0-9._]"
 
@@ -37,11 +38,13 @@ function print_usage {
    echo "      Default precision. Defaults to 'ap_fixed<16,6>'."
    echo "   -d DIR"
    echo "      Output directory."
+   echo "   -m maxloop"
+   echo "      The maximum number of computation sequence in an RNN layer."
    echo "   -h"
    echo "      Prints this help message."
 }
 
-while getopts ":p:x:c:sr:g:t:d:h" opt; do
+while getopts ":p:x:c:sr:g:t:d:m:h" opt; do
    case "$opt" in
    p) pycmd=${pycmd}$OPTARG
       ;;
@@ -59,11 +62,13 @@ while getopts ":p:x:c:sr:g:t:d:h" opt; do
       ;;
    d) basedir=$OPTARG
       ;;
+   m) maxloop=$OPTARG
+      ;;
    h)
       print_usage
       exit
       ;;
-   :)
+   :) 
       echo "Option -$OPTARG requires an argument."
       exit 1
       ;;
@@ -100,6 +105,8 @@ do
    echo "ProjectName: myproject" >> ${file}
    echo "XilinxPart: ${xilinxpart}" >> ${file}
    echo "ClockPeriod: ${clock}" >> ${file}
+   echo "" >> ${file}
+   echo "MaxLoop: ${maxloop}" >> ${file}
    echo "" >> ${file}
    echo "IOType: ${io}" >> ${file}
    echo "HLSConfig:" >> ${file}
