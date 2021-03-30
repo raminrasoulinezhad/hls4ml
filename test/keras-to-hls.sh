@@ -28,7 +28,7 @@ function print_usage {
    echo "      Xilinx device part number. Defaults to 'xc7vx690tffg1927-2'."
    echo "   -c CLOCK"
    echo "      Clock period to use. Defaults to 5."
-   echo "   -io io_type"
+   echo "   -i io_type"
    echo "      Use io_serial or io_parallel."
    echo "   -r FACTOR"
    echo "      Reuse factor. Defaults to 1."
@@ -44,7 +44,7 @@ function print_usage {
    echo "      Prints this help message."
 }
 
-while getopts ":p:x:c:io:r:g:t:d:m:h" opt; do
+while getopts ":p:x:c:i:r:g:t:d:m:h" opt; do
    case "$opt" in
    p) pycmd=${pycmd}$OPTARG
       ;;
@@ -52,7 +52,7 @@ while getopts ":p:x:c:io:r:g:t:d:m:h" opt; do
       ;;
    c) clock=$OPTARG
       ;;
-   io) io=$OPTARG
+   i) io=$OPTARG
       ;;
    r) rf=$OPTARG
       ;;
