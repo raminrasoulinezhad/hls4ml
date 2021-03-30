@@ -3,12 +3,12 @@
 pycmd=python
 xilinxpart="xc7vx690tffg1927-2"
 clock=5
-io=io_parallel
+io="io_parallel"
 rf=1
 strategy="Latency"
 type="ap_fixed<16,6>"
 basedir=vivado_prj
-maxloop=500
+maxloop=20
 
 sanitizer="[^A-Za-z0-9._]"
 
@@ -28,8 +28,8 @@ function print_usage {
    echo "      Xilinx device part number. Defaults to 'xc7vx690tffg1927-2'."
    echo "   -c CLOCK"
    echo "      Clock period to use. Defaults to 5."
-   echo "   -s"
-   echo "      Use serial I/O. If not specified uses parallel I/O."
+   echo "   -io io_type"
+   echo "      Use io_serial or io_parallel."
    echo "   -r FACTOR"
    echo "      Reuse factor. Defaults to 1."
    echo "   -g STRATEGY"
@@ -44,7 +44,7 @@ function print_usage {
    echo "      Prints this help message."
 }
 
-while getopts ":p:x:c:sr:g:t:d:m:h" opt; do
+while getopts ":p:x:c:s:r:g:t:d:m:h" opt; do
    case "$opt" in
    p) pycmd=${pycmd}$OPTARG
       ;;
@@ -52,7 +52,7 @@ while getopts ":p:x:c:sr:g:t:d:m:h" opt; do
       ;;
    c) clock=$OPTARG
       ;;
-   s) io=io_serial
+   s) io=$OPTARG
       ;;
    r) rf=$OPTARG
       ;;
