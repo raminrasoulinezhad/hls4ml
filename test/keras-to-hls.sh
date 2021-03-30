@@ -44,7 +44,7 @@ function print_usage {
    echo "      Prints this help message."
 }
 
-while getopts ":p:x:c:s:r:g:t:d:m:h" opt; do
+while getopts ":p:x:c:io:r:g:t:d:m:h" opt; do
    case "$opt" in
    p) pycmd=${pycmd}$OPTARG
       ;;
@@ -52,7 +52,7 @@ while getopts ":p:x:c:s:r:g:t:d:m:h" opt; do
       ;;
    c) clock=$OPTARG
       ;;
-   s) io=$OPTARG
+   io) io=$OPTARG
       ;;
    r) rf=$OPTARG
       ;;
