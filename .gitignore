@@ -8,3 +8,6 @@ vivado_prj
 .vscode
 my-hls-test
 *.tar.gz
+test/projects/
+venv/
+
