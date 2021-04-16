@@ -3,10 +3,10 @@
 #################
 array set opt {
   reset      0
-  csim       1
+  csim       0
   synth      1
-  cosim      1
-  validation 1
+  cosim      0
+  validation 0
   export     0
   vsynth     0
 }
@@ -64,7 +64,7 @@ if {$opt(reset)} {
 } else {
   open_solution "solution1"
 }
-catch {config_array_partition -maximum_size 4096}
+catch {config_array_partition -maximum_size 12288}
 set_part {xcku115-flvb2104-2-i}
 create_clock -period 5 -name default
 
