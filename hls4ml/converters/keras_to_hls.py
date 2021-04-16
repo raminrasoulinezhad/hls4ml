@@ -7,7 +7,7 @@ import math
 from hls4ml.model import HLSModel
 from hls4ml.model.optimizer import optimize_model
 
-MAXMULT = 4096
+MAXMULT = 12288
 
 class KerasDataReader:
     def __init__(self, config):
