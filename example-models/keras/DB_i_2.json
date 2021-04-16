@@ -26,7 +26,7 @@
                 "name": "input_1"
             },
             {
-                "class_name": "GRU",
+                "class_name": "LSTM",
                 "config": {
                     "activation": "relu",
                     "activity_regularizer": null,
@@ -78,6 +78,7 @@
                     "return_state": false,
                     "stateful": false,
                     "trainable": true,
+                    "unit_forget_bias": true,
                     "units": 256,
                     "unroll": false,
                     "use_bias": true
